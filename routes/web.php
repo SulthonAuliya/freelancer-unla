@@ -30,17 +30,17 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::resource('/jobs', JobsController::class);
-Route::get('/jobs/create', [JobsController::class, 'create'])->middleware('provider');
-Route::post('/jobs/store', [JobsController::class, 'store'])->middleware('provider');
+Route::get('/jobs/create', [JobsController::class, 'create']);
+Route::post('/jobs/store', [JobsController::class, 'store']);
 
 Route::get('/jobs/checkSlug', [JobsController::class, 'checkSlug']);
-Route::get('/lamaran/{job}', [JobsController::class, 'lamar'])->middleware('freelancer');
+Route::get('/lamaran/{job}', [JobsController::class, 'lamar']);
 
 
 Route::resource('/profile', UserController::class);
 Route::resource('/contact', SosmedController::class);
 Route::resource('/lampiran', LampiranController::class);
 
-Route::post('/lamar/store', [LamaranController::class, 'store'])->middleware('freelancer');
-Route::resource('/lamar', LamaranController::class)->middleware('freelancer');
-Route::resource('/lamarans', ProviderLamaranController::class)->middleware('provider');
+Route::post('/lamar/store', [LamaranController::class, 'store']);
+Route::resource('/lamar', LamaranController::class);
+Route::resource('/lamarans', ProviderLamaranController::class);
